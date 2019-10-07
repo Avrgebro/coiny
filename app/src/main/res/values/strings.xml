@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Coiny</string>
+    <string name="menu_start">Inicio</string>
+    <string name="menu_discounts">Descuentos</string>
+    <string name="menu_contacts">Contactos</string>
+    <string name="menu_more">Más</string>
 </resources>
