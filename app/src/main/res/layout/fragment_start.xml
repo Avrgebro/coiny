@@ -51,7 +51,7 @@
                 android:tint="@color/colorAccent"/>
 
             <TextView
-                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mostrar Saldo"
@@ -62,17 +62,70 @@
 
     </LinearLayout>
 
-    <com.ramotion.circlemenu.CircleMenuView
-        android:paddingTop="50dp"
-        android:id="@+id/circleMenuView"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:button_colors="@array/colors"
-        app:button_icons="@array/icons"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@android:drawable/ic_menu_search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.745"></com.ramotion.circlemenu.CircleMenuView>
+        app:layout_constraintVertical_bias="0.706" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:id="@+id/button1"
+        app:layout_constraintCircle="@id/button2"
+        app:layout_constraintCircleAngle="72"
+        app:layout_constraintCircleRadius="100dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"
+        app:layout_constraintTop_toTopOf="parent" android:visibility="visible"
+        android:src="@android:drawable/ic_input_add" app:backgroundTint="@color/colorPrimary"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        app:layout_constraintCircle="@id/button2"
+        app:layout_constraintCircleAngle="144"
+        app:layout_constraintCircleRadius="100dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/button3" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+        android:src="?android:attr/actionModeCutDrawable" app:backgroundTint="@android:color/holo_purple"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        app:layout_constraintCircle="@id/button2"
+        app:layout_constraintCircleAngle="216"
+        app:layout_constraintCircleRadius="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button4" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+        android:src="@android:drawable/stat_sys_download" app:backgroundTint="@android:color/holo_blue_dark"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        app:layout_constraintCircle="@id/button2"
+        app:layout_constraintCircleAngle="288"
+        app:layout_constraintCircleRadius="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/button5" android:layout_marginTop="8dp"
+        app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp" android:src="@android:drawable/ic_menu_upload"
+        app:backgroundTint="@android:color/holo_green_dark"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        app:layout_constraintCircle="@id/button2"
+        app:layout_constraintCircleAngle="360"
+        app:layout_constraintCircleRadius="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/button7" android:layout_marginTop="8dp"
+        app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent" android:src="@android:drawable/ic_menu_send"
+        app:backgroundTint="@android:color/holo_orange_dark"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

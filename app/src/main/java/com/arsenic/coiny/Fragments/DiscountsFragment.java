@@ -49,11 +49,13 @@ public class DiscountsFragment extends Fragment {
         Discount d2 = new Discount("PinkBerry", "4 toppings gratis para cualquier helado", "", R.drawable.cineplanet);
 
         List<Discount> discounts= new ArrayList<>();
+        discounts.add(d1);
+        discounts.add(d2);
 
-        RecyclerView discount_list = getActivity().findViewById(R.id.discounts_list);
+        RecyclerView discount_list = view.findViewById(R.id.discounts_list);
         discount_list.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        discount_list.setAdapter(new DiscountAdapter(discounts));
+        discount_list.setAdapter(new DiscountAdapter(getActivity(), discounts));
 
     }
 

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -7,16 +9,19 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@drawable/cineplanet"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         android:id="@+id/discount_list_logo"/>
 
+
     <LinearLayout
+        android:id="@+id/discount_list_linlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="vertical"
         android:padding="8dp"
-        android:layout_gravity="center"
-        android:id="@+id/discount_list_linlay" >
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/discount_list_logo">
 
         <TextView
             android:id="@+id/discount_list_company"
@@ -27,22 +32,24 @@
 
         <TextView
             android:id="@+id/discount_list_desc"
-            android:paddingTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="5dp"
             android:text="pequena descripcion de la promocion"
-            android:textSize="10sp"
-            android:textColor="#7e8580"/>
-    </LinearLayout>
+            android:textColor="#7e8580"
+            android:textSize="10sp" />
 
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/discount_list_go"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/next"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_gravity="center"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/next"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="12dp"/>
 
-
-</LinearLayout>
+</RelativeLayout>
