@@ -3,46 +3,61 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/cineplanet"
-        android:scaleType="centerCrop"
-        android:id="@+id/discount_list_logo"/>
-
+    android:layout_height="80dp">
 
     <LinearLayout
-        android:id="@+id/discount_list_linlay"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerVertical="true"
+        android:background="@drawable/contact_bg"
+        android:id="@+id/gaaa"
+        android:gravity="center"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+
+        <TextView
+            android:id="@+id/contact_list_initials"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="JC"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:textSize="25sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/contact_list_linlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="vertical"
         android:padding="8dp"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/discount_list_logo">
+        android:layout_toRightOf="@id/gaaa">
 
         <TextView
-            android:id="@+id/discount_list_company"
+            android:id="@+id/contact_list_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CinePlanet"
+            android:text="Juan Calvo"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/discount_list_desc"
+            android:id="@+id/contact_list_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
-            android:text="pequena descripcion de la promocion"
+            android:text="920014330"
             android:textColor="#7e8580"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/discount_list_go"
+        android:id="@+id/contact_list_go"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
