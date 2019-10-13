@@ -27,6 +27,7 @@
             app:civ_border_width="2dp" />
 
         <TextView
+            android:id="@+id/start_hello"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -36,6 +37,7 @@
             android:textSize="20sp" />
 
         <LinearLayout
+            android:id="@+id/show_saldo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

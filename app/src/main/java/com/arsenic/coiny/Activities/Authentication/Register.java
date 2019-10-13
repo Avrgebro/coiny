@@ -121,7 +121,7 @@ public class Register extends AppCompatActivity {
                 if(nom.isEmpty() || ape.isEmpty() || num.isEmpty() || cnum.isEmpty()){
                     Toast.makeText(Register.this, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show();
                 } else {
-                    db.insertRecord(nom, ape, 123456, num, 1000);
+                    db.insertRecord(nom, ape, 123456, num, 1000.0, 300.0);
 
                     SharedPreferences sp = getSharedPreferences("user", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sp.edit();

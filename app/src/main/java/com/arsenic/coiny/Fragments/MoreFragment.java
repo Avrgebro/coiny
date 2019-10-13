@@ -66,6 +66,8 @@ public class MoreFragment extends Fragment {
                 Intent intent = new Intent(getActivity(),
                         Login.class);
                 startActivity(intent);
+
+                getActivity().finish();
             }
         });
     }

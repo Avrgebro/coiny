@@ -19,7 +19,9 @@ public class DBManager extends SQLiteOpenHelper {
     public static final String APELLIDO_COLUMNA = "apellido";
     public static final String PASS_COLUMNA = "password";
     public static final String NUMERO_COLUMNA = "numero";
-    public static final String SALDO_COLUMNA = "saldo";
+    public static final String SALDO_SOL_COLUMNA = "saldo_sol";
+    public static final String SALDO_DOL_COLUMNA = "saldo_dol";
+
 
 
     public DBManager(Context context) {
@@ -34,7 +36,8 @@ public class DBManager extends SQLiteOpenHelper {
                 + APELLIDO_COLUMNA + " INTEGER, "
                 + PASS_COLUMNA + " INTEGER, "
                 + NUMERO_COLUMNA + " TEXT, "
-                + SALDO_COLUMNA + " INTEGER )");
+                + SALDO_SOL_COLUMNA + " REAL, "
+                + SALDO_DOL_COLUMNA + " REAL )");
     }
 
     @Override
@@ -43,7 +46,7 @@ public class DBManager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertRecord(String nombre, String apellido, int password, String numero, int saldo){
+    public void insertRecord(String nombre, String apellido, int password, String numero, double saldo_sol, double saldo_dol){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
@@ -51,7 +54,8 @@ public class DBManager extends SQLiteOpenHelper {
         contentValues.put(APELLIDO_COLUMNA, apellido);
         contentValues.put(PASS_COLUMNA, password);
         contentValues.put(NUMERO_COLUMNA, numero);
-        contentValues.put(SALDO_COLUMNA, saldo);
+        contentValues.put(SALDO_SOL_COLUMNA, saldo_sol);
+        contentValues.put(SALDO_DOL_COLUMNA, saldo_dol);
 
         db.insert(USUARIO_TABLA, null, contentValues);
     }
@@ -69,14 +73,27 @@ public class DBManager extends SQLiteOpenHelper {
             String uapellido = res.getString(res.getColumnIndex(APELLIDO_COLUMNA));
             int upass = res.getInt(res.getColumnIndex(PASS_COLUMNA));
             String unumero = res.getString(res.getColumnIndex(NUMERO_COLUMNA));
-            int usaldo = res.getInt(res.getColumnIndex(SALDO_COLUMNA));
+            double usaldo_sol = res.getDouble(res.getColumnIndex(SALDO_SOL_COLUMNA));
+            double usaldo_dol = res.getDouble(res.getColumnIndex(SALDO_DOL_COLUMNA));
 
-            u = new Usuario(unombre, uapellido, unumero, upass, usaldo);
+
+            u = new Usuario(unombre, uapellido, unumero, upass, usaldo_sol, usaldo_dol);
 
         }
 
         res.close();
         return u;
+
+    }
+
+    public void updateSaldo(String numero, double saldo_sol, double saldo_dol ){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(SALDO_SOL_COLUMNA,saldo_sol);
+        cv.put(SALDO_DOL_COLUMNA,saldo_dol);
+
+        db.update(USUARIO_TABLA, cv, "numero = ?", new String[]{numero});
 
     }
 
