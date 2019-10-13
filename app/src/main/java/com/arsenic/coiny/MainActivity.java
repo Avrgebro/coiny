@@ -5,15 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.arsenic.coiny.DBController.DBManager;
 import com.arsenic.coiny.Fragments.ContactsFragment;
 import com.arsenic.coiny.Fragments.DiscountsFragment;
 import com.arsenic.coiny.Fragments.MoreFragment;
 import com.arsenic.coiny.Fragments.StartFragment;
+import com.arsenic.coiny.Model.Usuario;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     final FragmentManager fm = getSupportFragmentManager();
     Fragment active = startFragment;
     LinearLayout appbar;
+    DBManager db;
+    Usuario luser;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -75,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         appbar = (LinearLayout) findViewById(R.id.appbar);
         appbar.setVisibility(View.GONE);
 
-
+        db = new DBManager(this);
 
         navigation.invalidate();
 
@@ -83,6 +88,13 @@ public class MainActivity extends AppCompatActivity {
         fm.beginTransaction().add(R.id.mainfragment, contactsFragment, "3").hide(contactsFragment).commit();
         fm.beginTransaction().add(R.id.mainfragment, discountsFragment, "2").hide(discountsFragment).commit();
         fm.beginTransaction().add(R.id.mainfragment, startFragment, "1").commit();
+
+        SharedPreferences sp = getSharedPreferences("user", MODE_PRIVATE);
+        String number = sp.getString("number", null);
+
+        luser = db.getUsuario(number);
+
+
 
 
 

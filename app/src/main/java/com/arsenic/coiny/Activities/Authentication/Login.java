@@ -2,8 +2,11 @@ package com.arsenic.coiny.Activities.Authentication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -48,12 +51,13 @@ public class Login extends AppCompatActivity {
 
                 int n = 0;
                 int p = 0;
+                Usuario user = null;
 
                 if(numberet.getText().toString().isEmpty()){
                     numbertil.setError("Ingresa tu número");
 
                 }else{
-                    Usuario user = db.getUsuario(numberet.getText().toString());
+                    user = db.getUsuario(numberet.getText().toString());
 
                     if(user == null){
                         Toast.makeText(Login.this, "Usuario no existe!!", Toast.LENGTH_SHORT).show();
@@ -70,9 +74,32 @@ public class Login extends AppCompatActivity {
                 }
 
                 if(p == 1 && n == 1){
-                    Intent intent = new Intent(getApplicationContext(),
-                            MainActivity.class);
-                    startActivity(intent);
+                    SharedPreferences sp = getSharedPreferences("user", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sp.edit();
+
+                    editor.putInt("user_logged", 1);
+                    editor.putString("number", numberet.getText().toString());
+
+                    editor.apply();
+
+                    final ProgressDialog dialog = new ProgressDialog(Login.this);
+
+                    dialog.setMessage("Estamos validando tus datos!!");
+                    dialog.show();
+
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Do something after 100ms
+                            dialog.dismiss();
+                            Intent intent = new Intent(getApplicationContext(),
+                                    MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }, 2000);
+
                 }
 
 
@@ -82,7 +109,10 @@ public class Login extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(),
+                        Register.class);
+                startActivity(intent);
+                finish();
             }
         });
 

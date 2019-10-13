@@ -1,6 +1,8 @@
 package com.arsenic.coiny.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -11,8 +13,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.arsenic.coiny.Activities.Authentication.Login;
+import com.arsenic.coiny.MainActivity;
 import com.arsenic.coiny.R;
+import com.google.android.material.textfield.TextInputEditText;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,6 +49,25 @@ public class MoreFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        TextView logout = (TextView) view.findViewById(R.id.more_logout);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sp = getActivity().getSharedPreferences("user", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+
+                editor.putInt("user_logged", 0);
+                editor.putString("number", null);
+
+                editor.apply();
+
+                Intent intent = new Intent(getActivity(),
+                        Login.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

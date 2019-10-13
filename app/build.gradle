@@ -31,4 +31,6 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.0.1'
     implementation 'com.github.thealeksandr:PFLockScreen-Android:1.0.0-beta5'
     implementation 'com.hanks:passcodeview:0.1.2'
+    implementation 'com.github.sharish:CreditCardView:v1.0.4'
+    implementation 'com.github.ozodrukh:CircularReveal:2.1.0'
 }
