@@ -7,6 +7,8 @@ import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.arsenic.coiny.Fragments.ContactsFragment;
 import com.arsenic.coiny.Fragments.DiscountsFragment;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     final Fragment moreFragment = new MoreFragment();
     final FragmentManager fm = getSupportFragmentManager();
     Fragment active = startFragment;
+    LinearLayout appbar;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -34,21 +37,25 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.menu_start:
                     fm.beginTransaction().hide(active).show(startFragment).commit();
                     active = startFragment;
+                    appbar.setVisibility(View.GONE);
                     return true;
 
                 case R.id.menu_discounts:
                     fm.beginTransaction().hide(active).show(discountsFragment).commit();
                     active = discountsFragment;
+                    appbar.setVisibility(View.VISIBLE);
                     return true;
 
                 case R.id.menu_contacts:
                     fm.beginTransaction().hide(active).show(contactsFragment).commit();
                     active = contactsFragment;
+                    appbar.setVisibility(View.VISIBLE);
                     return true;
 
                 case R.id.menu_more:
                     fm.beginTransaction().hide(active).show(moreFragment).commit();
                     active = moreFragment;
+                    appbar.setVisibility(View.VISIBLE);
                     return true;
             }
             return false;
@@ -64,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        appbar = (LinearLayout) findViewById(R.id.appbar);
+        appbar.setVisibility(View.GONE);
 
 
 

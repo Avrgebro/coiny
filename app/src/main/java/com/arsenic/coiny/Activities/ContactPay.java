@@ -21,6 +21,9 @@ public class ContactPay extends AppCompatActivity {
 
         Contact c = (Contact) getIntent().getSerializableExtra("Contact");
 
+        TextView initials = (TextView) findViewById(R.id.cpay_initials);
+        initials.setText(c.getInitials());
+
         TextView nombre = (TextView) findViewById(R.id.cpay_nombre);
         nombre.setText(c.getNombre() + " " + c.getApellido());
 

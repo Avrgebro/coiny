@@ -20,73 +20,124 @@
         app:layout_constraintVertical_bias="0.005" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nuevo Pago"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.309">
 
-        <TextView
-            android:id="@+id/cpay_nombre"
-            android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/contact_bg">
+
+                <TextView
+                    android:id="@+id/cpay_initials"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="JB"
+                    android:textColor="@color/white"
+                    android:textSize="35sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nuevo Pago"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/cpay_nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gustavo Levano"
+                android:textSize="35sp" />
+
+            <TextView
+                android:id="@+id/cpay_numero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="920014330" />
+
+            <TextView
+                android:id="@+id/cpay_monto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="S/ 00.00"
+                android:textSize="50sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Gustavo Levano"
-            android:textSize="35sp" />
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-        <TextView
-            android:id="@+id/cpay_numero"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="920014330" />
 
-        <TextView
-            android:id="@+id/cpay_monto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="S/ 00.00"
-            android:textSize="50sp" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_margin="15dp"
+                android:hint="Monto"
+                android:id="@+id/monto_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:textAlignment="center" />
 
+            <androidx.appcompat.widget.AppCompatEditText
+                android:hint="Mensaje"
+                android:layout_margin="15dp"
+                android:id="@+id/msg_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"/>
+
+            <androidx.appcompat.widget.AppCompatSpinner
+
+                android:layout_margin="15dp"
+                android:id="@+id/categories_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="13dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text="Enviar Pago"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        android:orientation="vertical">
-
-
-        <EditText
-            android:id="@+id/monto_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"/>
-
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/categories_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enviar Pago"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/colorAccent"/>
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

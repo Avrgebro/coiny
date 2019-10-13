@@ -11,18 +11,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name=".Activities.ContactPay"
-            android:parentActivityName=".MainActivity">
-
-        </activity>
-        <activity
-            android:name=".Activities.DiscountInfo"
-            android:parentActivityName=".MainActivity">
-
-        </activity>
-        <activity
-            android:name=".SplashScreen"
+        <activity android:name=".Activities.Budget"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Activities.Services"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Activities.Exchange"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Activities.Savings"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Activities.ContactPay"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".Activities.DiscountInfo"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".SplashScreen"
             android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
