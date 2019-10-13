@@ -1,6 +1,8 @@
 package com.arsenic.coiny.Model;
 
-public class Discount {
+import java.io.Serializable;
+
+public class Discount implements Serializable {
 
     private String company;
     private String small_description;

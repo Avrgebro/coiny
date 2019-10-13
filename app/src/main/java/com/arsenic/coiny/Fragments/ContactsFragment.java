@@ -1,5 +1,6 @@
 package com.arsenic.coiny.Fragments;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -13,8 +14,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.arsenic.coiny.Activities.ContactPay;
+
 import com.arsenic.coiny.Adapters.ContactAdapter;
-import com.arsenic.coiny.Adapters.DiscountAdapter;
+
+import com.arsenic.coiny.Interfaces.OnItemClickListener;
 import com.arsenic.coiny.Model.Contact;
 import com.arsenic.coiny.R;
 
@@ -62,7 +66,16 @@ public class ContactsFragment extends Fragment {
         RecyclerView contact_list = view.findViewById(R.id.contacts_list);
         contact_list.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        contact_list.setAdapter(new ContactAdapter(getActivity(), contacts));
+        contact_list.setAdapter(new ContactAdapter(getActivity(), contacts, new OnItemClickListener() {
+            @Override
+            public void onItemClick(Object item) {
+                Contact cont = (Contact)item;
+
+                Intent intent = new Intent(getActivity(), ContactPay.class);
+                intent.putExtra("Contact", cont);
+                startActivity(intent);
+            }
+        }));
     }
 
     public interface OnFragmentInteractionListener {

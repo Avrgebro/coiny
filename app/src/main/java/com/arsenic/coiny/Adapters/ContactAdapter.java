@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.arsenic.coiny.Interfaces.OnItemClickListener;
 import com.arsenic.coiny.Model.Contact;
 import com.arsenic.coiny.Model.Discount;
 import com.arsenic.coiny.R;
@@ -19,10 +20,12 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
 
     private List<Contact> contacts;
     private Context context;
+    private OnItemClickListener listener;
 
-    public ContactAdapter(Context context, List contacts){
+    public ContactAdapter(Context context, List contacts, OnItemClickListener listener){
         this.contacts = contacts;
         this.context = context;
+        this.listener = listener;
     }
 
     @NonNull
@@ -41,6 +44,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         String showname = contact.getNombre() + " " + contact.getApellido();
         holder.name.setText(showname);
         holder.number.setText(contact.getTelefono());
+
+        holder.bind(contact, listener);
     }
 
     @Override
@@ -60,6 +65,14 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
             initials = itemView.findViewById(R.id.contact_list_initials);
             name = itemView.findViewById(R.id.contact_list_name);
             number = itemView.findViewById(R.id.contact_list_number);
+        }
+
+        public void bind(final Contact item, final OnItemClickListener listener) {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(item);
+                }
+            });
         }
     }
 }

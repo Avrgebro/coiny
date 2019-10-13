@@ -1,6 +1,8 @@
 package com.arsenic.coiny.Model;
 
-public class Contact {
+import java.io.Serializable;
+
+public class Contact implements Serializable {
     private String nombre;
     private String apellido;
     private String telefono;

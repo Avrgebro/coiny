@@ -7,7 +7,7 @@
     tools:context=".Activities.DiscountInfo">
 
     <ImageView
-        android:id="@+id/con_upnav"
+        android:id="@+id/dis_upnav"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:rotation="180"
@@ -31,12 +31,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/discinfo_image"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
             android:src="@drawable/cineplanet" />
 
         <TextView
+            android:id="@+id/discinfo_company"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="12dp"
@@ -46,6 +48,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/discinfo_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"

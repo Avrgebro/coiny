@@ -30,7 +30,6 @@ public class DiscountsFragment extends Fragment{
 
     private static final String TAG = "Discounts Fragment";
     View view;
-    List<Discount> discounts;
 
     public DiscountsFragment() {
         // Required empty public constructor
@@ -53,7 +52,7 @@ public class DiscountsFragment extends Fragment{
         Discount d1 = new Discount("Cineplanet", "2x1 en entradas de estrenos", "", R.drawable.cineplanet);
         Discount d2 = new Discount("PinkBerry", "4 toppings gratis para cualquier helado", "", R.drawable.cineplanet);
 
-        discounts= new ArrayList<>();
+        List<Discount> discounts= new ArrayList<>();
         discounts.add(d1);
         discounts.add(d2);
 
@@ -67,6 +66,7 @@ public class DiscountsFragment extends Fragment{
                 //Toast.makeText(getActivity(), ((Discount) item).getCompany(), Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getActivity(), DiscountInfo.class);
+                intent.putExtra("Discount", disc);
                 startActivity(intent);
             }
         }));
