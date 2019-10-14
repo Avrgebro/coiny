@@ -55,6 +55,7 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:hint="Pin"
+                android:maxLength="6"
                 android:inputType="numberPassword"
                 android:textAlignment="center"
                 android:textColor="@color/colorAccent"

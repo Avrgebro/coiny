@@ -22,6 +22,16 @@ public class DBManager extends SQLiteOpenHelper {
     public static final String SALDO_SOL_COLUMNA = "saldo_sol";
     public static final String SALDO_DOL_COLUMNA = "saldo_dol";
 
+    //TABLA DE PRESUPUESTO
+    public static final String BUDGET_TABLA = "tbudget";
+    public static final String SHOPPING_COLUMNA = "shopping";
+    public static final String TRANSPORTE_COLUMNA = "transporte";
+    public static final String COMIDA_COLUMNA = "comida";
+    public static final String FAMILIA_COLUMNA = "familia";
+    public static final String ENTRETENIMIENTO_COLUMNA = "entretenimiento";
+
+    //TABLA DE PRESUPUESTO USADO
+    public static final String USED_BUDGET_TABLA = "tubudget";
 
 
     public DBManager(Context context) {
@@ -38,11 +48,29 @@ public class DBManager extends SQLiteOpenHelper {
                 + NUMERO_COLUMNA + " TEXT, "
                 + SALDO_SOL_COLUMNA + " REAL, "
                 + SALDO_DOL_COLUMNA + " REAL )");
+
+        db.execSQL("CREATE TABLE " + BUDGET_TABLA + "( "
+                + NUMERO_COLUMNA + " TEXT PRIMARY KEY, "
+                + SHOPPING_COLUMNA + " REAL, "
+                + TRANSPORTE_COLUMNA + " REAL, "
+                + COMIDA_COLUMNA + " REAL, "
+                + FAMILIA_COLUMNA + " REAL, "
+                + ENTRETENIMIENTO_COLUMNA + " REAL )");
+
+        db.execSQL("CREATE TABLE " + USED_BUDGET_TABLA + "( "
+                + NUMERO_COLUMNA + " TEXT PRIMARY KEY, "
+                + SHOPPING_COLUMNA + " REAL, "
+                + TRANSPORTE_COLUMNA + " REAL, "
+                + COMIDA_COLUMNA + " REAL, "
+                + FAMILIA_COLUMNA + " REAL, "
+                + ENTRETENIMIENTO_COLUMNA + " REAL )");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + USUARIO_TABLA);
+        db.execSQL("DROP TABLE IF EXISTS " + BUDGET_TABLA);
+        db.execSQL("DROP TABLE IF EXISTS " + USED_BUDGET_TABLA);
         onCreate(db);
     }
 
@@ -58,6 +86,19 @@ public class DBManager extends SQLiteOpenHelper {
         contentValues.put(SALDO_DOL_COLUMNA, saldo_dol);
 
         db.insert(USUARIO_TABLA, null, contentValues);
+
+
+        ContentValues contentValuesBudget = new ContentValues();
+
+        contentValues.put(NUMERO_COLUMNA, numero);
+        contentValues.put(SHOPPING_COLUMNA, 0.0);
+        contentValues.put(TRANSPORTE_COLUMNA, 0.0);
+        contentValues.put(COMIDA_COLUMNA, 0.0);
+        contentValues.put(FAMILIA_COLUMNA, 0.0);
+        contentValues.put(ENTRETENIMIENTO_COLUMNA, 0.0);
+
+        db.insert(BUDGET_TABLA, null, contentValuesBudget);
+        db.insert(USED_BUDGET_TABLA, null, contentValuesBudget);
     }
 
     public Usuario getUsuario(String numero){
@@ -95,6 +136,56 @@ public class DBManager extends SQLiteOpenHelper {
 
         db.update(USUARIO_TABLA, cv, "numero = ?", new String[]{numero});
 
+    }
+
+    public void updateBudget(String numero, String type, double monto){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(type, monto);
+
+        db.update(BUDGET_TABLA, cv, "numero = ?", new String[]{numero});
+
+    }
+
+    public void updateUsedBudget(String numero, String type, double monto){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(type, monto);
+
+        db.update(USED_BUDGET_TABLA, cv, "numero = ?", new String[]{numero});
+
+    }
+
+    public double getBudget(String numero, String type){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM tbudget WHERE numero=?", new String[] {numero});
+
+        if(res.getCount() > 0){
+            res.moveToFirst();
+
+            double b = res.getDouble(res.getColumnIndex(type));
+            return b;
+        }
+
+        return 0.0;
+    }
+
+    public double getUsedBudget(String numero, String type){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM tubudget WHERE numero=?", new String[] {numero});
+
+        if(res.getCount() > 0){
+            res.moveToFirst();
+
+            double b = res.getDouble(res.getColumnIndex(type));
+            return b;
+        }
+
+        return 0.0;
     }
 
 
