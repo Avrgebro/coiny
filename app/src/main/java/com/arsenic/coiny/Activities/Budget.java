@@ -1,25 +1,29 @@
 package com.arsenic.coiny.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.arsenic.coiny.Adapters.BudgetAdapter;
 import com.arsenic.coiny.DBController.DBManager;
+import com.arsenic.coiny.Interfaces.OnItemClickListener;
 import com.arsenic.coiny.R;
 
-public class Budget extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-    TextView shoptv;
-    TextView trantv;
-    TextView famitv;
-    TextView entrtv;
-    TextView foodtv;
+public class Budget extends AppCompatActivity {
 
     DBManager db;
 
@@ -33,19 +37,6 @@ public class Budget extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("user", MODE_PRIVATE);
         String number = sp.getString("number", null);
 
-        double bshop = db.getBudget(number, "shopping");
-        double btran = db.getBudget(number, "transporte");
-        double bfami = db.getBudget(number, "familia");
-        double bentr = db.getBudget(number, "entretenimiento");
-        double bfood = db.getBudget(number, "familia");
-
-        double ubshop = db.getUsedBudget(number, "shopping");
-        double ubtran = db.getUsedBudget(number, "transporte");
-        double ubfami = db.getUsedBudget(number, "familia");
-        double ubentr = db.getUsedBudget(number, "entretenimiento");
-        double ubfood = db.getUsedBudget(number, "familia");
-
-
         ImageView upnav = (ImageView) findViewById(R.id.budget_upnav);
         upnav.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,60 +45,40 @@ public class Budget extends AppCompatActivity {
             }
         });
 
-        RelativeLayout shop = (RelativeLayout) findViewById(R.id.b_shopping);
-        RelativeLayout tran = (RelativeLayout) findViewById(R.id.b_transporte);
-        RelativeLayout fami = (RelativeLayout) findViewById(R.id.b_familia);
-        RelativeLayout entr = (RelativeLayout) findViewById(R.id.b_entretenimiento);
-        RelativeLayout food = (RelativeLayout) findViewById(R.id.b_comida);
 
-        shoptv = (TextView) findViewById(R.id.shop_amt);
-        famitv = (TextView) findViewById(R.id.fam_amt);
-        trantv = (TextView) findViewById(R.id.tran_amt);
-        entrtv = (TextView) findViewById(R.id.ent_amt);
-        foodtv = (TextView) findViewById(R.id.com_amt);
+        HashMap<String,Integer> ga = new HashMap<String,Integer>();
 
-        shoptv.setText(ubshop + "/" + bshop);
-        famitv.setText(ubfami + "/" + bfami);
-        trantv.setText(ubtran + "/" + btran);
-        entrtv.setText(ubentr + "/" + bentr);
-        foodtv.setText(ubfood + "/" + bfood);
+        ga.put("shopping", R.drawable.shopping);
+        ga.put("transporte", R.drawable.transport);
+        ga.put("comida", R.drawable.donut);
+        ga.put("familia", R.drawable.family);
+        ga.put("entretenimiento", R.drawable.theater);
+
+        String[] types = {"shopping", "transporte", "comida", "familia", "entretenimiento"};
+
+        List<com.arsenic.coiny.Model.Budget> budgets = new ArrayList<>();
+
+        for(String t : types){
+            com.arsenic.coiny.Model.Budget b = new com.arsenic.coiny.Model.Budget(t,db.getBudget(t,number),db.getUsedBudget(t,number),ga.get(t));
+            budgets.add(b);
+        }
 
 
+        RecyclerView budget_list = (RecyclerView) findViewById(R.id.budget_list);
+        budget_list.setLayoutManager(new LinearLayoutManager(this));
 
-        shop.setOnClickListener(new View.OnClickListener() {
+        budget_list.setAdapter(new BudgetAdapter(this, budgets, new OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                handleClick("shopping",shoptv);
-            }
-        });
+            public void onItemClick(Object item) {
+                com.arsenic.coiny.Model.Budget bud = (com.arsenic.coiny.Model.Budget)item;
 
-        tran.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleClick("transporte",trantv);
+                Intent intent = new Intent(Budget.this, BudgetInfo.class);
+                intent.putExtra("Budget", bud);
+                startActivity(intent);
             }
-        });
+        }));
 
-        fami.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleClick("familia",famitv);
-            }
-        });
 
-        entr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleClick("entretenimiento",entrtv);
-            }
-        });
-
-        food.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleClick("comida",foodtv);
-            }
-        });
 
 
     }

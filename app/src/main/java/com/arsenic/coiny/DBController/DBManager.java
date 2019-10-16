@@ -6,7 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.arsenic.coiny.Model.Budget;
 import com.arsenic.coiny.Model.Usuario;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBManager extends SQLiteOpenHelper {
 
@@ -186,6 +190,33 @@ public class DBManager extends SQLiteOpenHelper {
         }
 
         return 0.0;
+    }
+
+    public List<Budget> getBudgets(String numero){
+        List<Budget> r = new ArrayList<>();
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor resbudget = db.rawQuery("SELECT * FROM tbudget where numero=?", new String[] {numero});
+        Cursor resubudget = db.rawQuery("SELECT * FROM tubudget WHERE numero=?", new String[] {numero});
+
+        resbudget.moveToFirst();
+        resubudget.moveToFirst();
+
+        String[] types = {"shopping", "transporte", "comida", "familia", "entretenimiento"};
+
+        for(String t : types){
+            double auxb = resbudget.getDouble(resbudget.getColumnIndex(t));
+            double auxub = resubudget.getDouble(resubudget.getColumnIndex(t));
+
+            Budget b = new Budget(t, auxb, auxub, 0 );
+
+            r.add(b);
+        }
+
+
+
+        return r;
     }
 
 

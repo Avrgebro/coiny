@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Budget">
+    tools:context=".Activities.BudgetInfo">
 
     <ImageView
-        android:id="@+id/budget_upnav"
+        android:id="@+id/binfo_upnav"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:rotation="180"
@@ -19,25 +19,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.005" />
 
-    <TextView
-        android:id="@+id/budget_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:text="Presupuesto"
-        android:textColor="#69706b"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/budget_upnav" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/budget_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <com.mancj.slimchart.SlimChart
+        android:id="@+id/slimChart"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/budget_title" />
+        app:layout_constraintTop_toBottomOf="@+id/binfo_upnav"
+        app:roundedEdges="true"
+        app:strokeWidth="20dp"
+        app:text=""
+        app:textColor="@color/colorAccent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

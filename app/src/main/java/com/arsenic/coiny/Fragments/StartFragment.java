@@ -28,6 +28,8 @@ import com.arsenic.coiny.DBController.DBManager;
 import com.arsenic.coiny.Model.Usuario;
 import com.arsenic.coiny.R;
 
+import java.text.DecimalFormat;
+
 import static android.content.Context.MODE_PRIVATE;
 
 
@@ -119,9 +121,11 @@ public class StartFragment extends Fragment {
             public void onClick(View v) {
                 u = db.getUsuario(u.getNumero());
 
+                DecimalFormat df = new DecimalFormat("#.##");
+
 
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
-                builder1.setMessage("S/. " + u.getSaldo_sol() + "\nUS$ " + u.getSaldo_dol());
+                builder1.setMessage("S/. " + df.format(u.getSaldo_sol()) + "\nUS$ " + df.format(u.getSaldo_dol()));
                 builder1.setCancelable(true);
 
                 builder1.setPositiveButton(

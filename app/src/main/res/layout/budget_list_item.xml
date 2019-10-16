@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="80dp">
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/theater"
+        android:id="@+id/budget_image"
+        android:gravity="center"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"/>
+
+    <LinearLayout
+        android:id="@+id/budget_list_linlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/budget_image">
+
+        <TextView
+            android:id="@+id/budget_list_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Entretenimiento"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/budget_list_summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="S/152 / S/300"
+            android:textColor="#7e8580"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/budget_list_go"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:src="@drawable/next"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="12dp"/>
+
+</RelativeLayout>
