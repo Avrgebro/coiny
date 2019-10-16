@@ -98,16 +98,17 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_margin="15dp"
                 android:hint="Monto"
                 android:id="@+id/monto_input"
+                android:maxLength="6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:textAlignment="center" />
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:hint="Mensaje"
                 android:layout_margin="15dp"
                 android:id="@+id/msg_input"
@@ -127,6 +128,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/cpay_send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="13dp"

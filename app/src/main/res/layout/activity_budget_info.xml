@@ -19,17 +19,44 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.005" />
 
-    <com.mancj.slimchart.SlimChart
-        android:id="@+id/slimChart"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/binfo_upnav"
-        app:roundedEdges="true"
-        app:strokeWidth="20dp"
-        app:text=""
-        app:textColor="@color/colorAccent" />
+        app:layout_constraintTop_toBottomOf="@+id/binfo_upnav">
+
+
+        <com.mancj.slimchart.SlimChart
+            android:id="@+id/slimChart"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:roundedEdges="true"
+            app:strokeWidth="20dp"
+            app:text=""
+            app:textColor="@color/colorAccent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Entretenimiento"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S/ 25.00 / S/ 150.0"
+            android:textSize="18sp" />
+
+
+
+    </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
