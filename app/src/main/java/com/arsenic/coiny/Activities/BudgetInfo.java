@@ -1,6 +1,7 @@
 package com.arsenic.coiny.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -31,13 +32,15 @@ public class BudgetInfo extends AppCompatActivity {
         int[] colors = new int[4];
         colors[0] = R.color.colorPrimary;
         colors[1] = R.color.colorAccent;
-        slimChart.setColors(colors);
+        //slimChart.setColors(colors);
 
         final float[] stats = new float[4];
         stats[0] = 100;
         stats[1] = 85;
 
         slimChart.setStats(stats);
+
+        slimChart.setColor(ContextCompat.getColor(this, R.color.colorPrimary));
 
         //Play animation
         slimChart.setStartAnimationDuration(2000);

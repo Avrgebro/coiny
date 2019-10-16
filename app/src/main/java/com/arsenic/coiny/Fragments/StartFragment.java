@@ -25,8 +25,10 @@ import com.arsenic.coiny.Activities.Exchange;
 import com.arsenic.coiny.Activities.Savings;
 import com.arsenic.coiny.Activities.Services;
 import com.arsenic.coiny.DBController.DBManager;
+import com.arsenic.coiny.MainActivity;
 import com.arsenic.coiny.Model.Usuario;
 import com.arsenic.coiny.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.text.DecimalFormat;
 
@@ -99,7 +101,8 @@ public class StartFragment extends Fragment {
         btn_payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                BottomNavigationView n = ((MainActivity)getActivity()).navigation;
+                n.setSelectedItemId(R.id.menu_contacts);
 
             }
         });
