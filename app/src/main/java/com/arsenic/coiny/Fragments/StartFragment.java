@@ -127,7 +127,7 @@ public class StartFragment extends Fragment {
                 DecimalFormat df = new DecimalFormat("#.##");
 
 
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
+                /*AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
                 builder1.setMessage("S/. " + df.format(u.getSaldo_sol()) + "\nUS$ " + df.format(u.getSaldo_dol()));
                 builder1.setCancelable(true);
 
@@ -143,7 +143,13 @@ public class StartFragment extends Fragment {
                 alert11.show();
                 TextView textView = (TextView) alert11.findViewById(android.R.id.message);
                 textView.setTextSize(25);
-                textView.setGravity(Gravity.CENTER);
+                textView.setGravity(Gravity.CENTER);*/
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                ViewGroup viewGroup = v.findViewById(android.R.id.content);
+                View dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.dialog_view, viewGroup, false);
+                builder.setView(dialogView);
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
 
             }
         });

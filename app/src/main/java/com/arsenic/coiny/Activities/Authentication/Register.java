@@ -8,10 +8,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.arsenic.coiny.DBController.DBManager;
@@ -22,10 +24,11 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class Register extends AppCompatActivity {
 
-    CreditCardView ccard;
+    TextView ccard;
     TextInputEditText nombre;
     TextInputEditText apeliido;
     TextInputEditText numero;
+    TextInputEditText cardn;
 
     DBManager db;
 
@@ -47,11 +50,11 @@ public class Register extends AppCompatActivity {
             }
         });
 
-        ccard = (CreditCardView) findViewById(R.id.card_5);
+        ccard = (TextView) findViewById(R.id.card_5);
         numero = (TextInputEditText) findViewById(R.id.register_num);
 
 
-        TextInputEditText cardn = (TextInputEditText) findViewById(R.id.register_cardn);
+        cardn = (TextInputEditText) findViewById(R.id.register_cardn);
 
         cardn.addTextChangedListener(new TextWatcher() {
             @Override
@@ -61,7 +64,9 @@ public class Register extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                ccard.setCardNumber(s.toString());
+                String n = s.toString();
+                n = n.replaceAll("....(?!$)", "$0 ");
+                ccard.setText(n);
             }
 
             @Override
@@ -73,39 +78,7 @@ public class Register extends AppCompatActivity {
         nombre = (TextInputEditText) findViewById(R.id.register_nom);
         apeliido = (TextInputEditText) findViewById(R.id.register_ape);
 
-        nombre.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                ccard.setCardHolderName(s.toString() + " " + apeliido.getText().toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        apeliido.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                ccard.setCardHolderName(nombre.getText().toString() + " " + s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
         Button rgbtn = (Button) findViewById(R.id.register_rg);
 
@@ -116,12 +89,12 @@ public class Register extends AppCompatActivity {
                 String nom = nombre.getText().toString();
                 String ape = apeliido.getText().toString();
                 String num = numero.getText().toString();
-                String cnum = ccard.getCardNumber();
+                String cnum = ccard.getText().toString();
 
                 if(nom.isEmpty() || ape.isEmpty() || num.isEmpty() || cnum.isEmpty()){
                     Toast.makeText(Register.this, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show();
                 } else {
-                    db.insertRecord(nom, ape, 123456, num, 1000.0, 300.0);
+                    db.insertRecord(nom, ape, 123456, num, 1000.0, 300.0, cnum);
 
                     SharedPreferences sp = getSharedPreferences("user", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sp.edit();

@@ -25,6 +25,7 @@ public class DBManager extends SQLiteOpenHelper {
     public static final String NUMERO_COLUMNA = "numero";
     public static final String SALDO_SOL_COLUMNA = "saldo_sol";
     public static final String SALDO_DOL_COLUMNA = "saldo_dol";
+    public static final String DNI_COLUMNA = "dni";
 
     //TABLA DE PRESUPUESTO
     public static final String BUDGET_TABLA = "tbudget";
@@ -50,6 +51,7 @@ public class DBManager extends SQLiteOpenHelper {
                 + APELLIDO_COLUMNA + " INTEGER, "
                 + PASS_COLUMNA + " INTEGER, "
                 + NUMERO_COLUMNA + " TEXT, "
+                + DNI_COLUMNA + " TEXT, "
                 + SALDO_SOL_COLUMNA + " REAL, "
                 + SALDO_DOL_COLUMNA + " REAL )");
 
@@ -78,7 +80,7 @@ public class DBManager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertRecord(String nombre, String apellido, int password, String numero, double saldo_sol, double saldo_dol){
+    public void insertRecord(String nombre, String apellido, int password, String numero, double saldo_sol, double saldo_dol, String dni){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
@@ -88,6 +90,7 @@ public class DBManager extends SQLiteOpenHelper {
         contentValues.put(NUMERO_COLUMNA, numero);
         contentValues.put(SALDO_SOL_COLUMNA, saldo_sol);
         contentValues.put(SALDO_DOL_COLUMNA, saldo_dol);
+        contentValues.put(DNI_COLUMNA, dni);
 
         db.insert(USUARIO_TABLA, null, contentValues);
 
