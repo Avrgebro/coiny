@@ -144,9 +144,15 @@ public class StartFragment extends Fragment {
                 TextView textView = (TextView) alert11.findViewById(android.R.id.message);
                 textView.setTextSize(25);
                 textView.setGravity(Gravity.CENTER);*/
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 ViewGroup viewGroup = v.findViewById(android.R.id.content);
                 View dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.dialog_view, viewGroup, false);
+                TextView dsol = (TextView) dialogView.findViewById(R.id.dialog_soles);
+                TextView ddol = (TextView) dialogView.findViewById(R.id.dialog_dolares);
+
+                dsol.setText("S/ " + df.format(u.getSaldo_sol()));
+                ddol.setText("US$ " + df.format(u.getSaldo_dol()));
                 builder.setView(dialogView);
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();

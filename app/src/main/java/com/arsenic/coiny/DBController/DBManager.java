@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.arsenic.coiny.Model.Budget;
 import com.arsenic.coiny.Model.Usuario;
@@ -169,13 +170,15 @@ public class DBManager extends SQLiteOpenHelper {
 
     public double getBudget(String numero, String type){
         SQLiteDatabase db = getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM tbudget WHERE numero=?", new String[] {numero});
+        Cursor res = db.rawQuery("SELECT * FROM tbudget WHERE numero = ?", new String[] {numero});
+
+        Log.i("GETBUDGET:", res.getCount()+"");
 
         if(res.getCount() > 0){
             res.moveToFirst();
 
             double b = res.getDouble(res.getColumnIndex(type));
-            return b;
+            return 0.0;
         }
 
         return 0.0;
@@ -183,7 +186,7 @@ public class DBManager extends SQLiteOpenHelper {
 
     public double getUsedBudget(String numero, String type){
         SQLiteDatabase db = getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM tubudget WHERE numero=?", new String[] {numero});
+        Cursor res = db.rawQuery("SELECT * FROM tubudget WHERE numero = ?", new String[] {numero});
 
         if(res.getCount() > 0){
             res.moveToFirst();

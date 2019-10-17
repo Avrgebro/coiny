@@ -37,6 +37,8 @@ public class Budget extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("user", MODE_PRIVATE);
         String number = sp.getString("number", null);
 
+        db.updateBudget(number, "shopping", 100.0);
+
         ImageView upnav = (ImageView) findViewById(R.id.budget_upnav);
         upnav.setOnClickListener(new View.OnClickListener() {
             @Override
