@@ -3,20 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.arsenic.coiny">
 
-    <uses-permission android:name = "android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_app_02"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_app_02"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activities.More.Help"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".Activities.More.Transactions"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Activities.ServicePay"></activity>
+        <activity
+            android:name=".Activities.More.Help"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Activities.More.Transactions"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Activities.BudgetInfo"
             android:parentActivityName=".Activities.Budget" />

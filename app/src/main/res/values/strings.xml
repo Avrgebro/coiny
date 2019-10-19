@@ -13,4 +13,25 @@
         <item>Familia</item>
         <item>Entretenimiento</item>
     </string-array>
+
+    <string-array name="service_light">
+        <item>Enel</item>
+        <item>Luz del Sur</item>
+        <item>Enosa</item>
+        <item>Chinango</item>
+    </string-array>
+
+    <string-array name="service_water">
+        <item>Sedapal</item>
+        <item>Sedapar</item>
+        <item>Sedalib</item>
+        <item>Emapacop SA</item>
+    </string-array>
+
+    <string-array name="service_phone">
+        <item>Movistar</item>
+        <item>Claro</item>
+        <item>Entel</item>
+        <item>Bitel</item>
+    </string-array>
 </resources>

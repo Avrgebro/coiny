@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBManager extends SQLiteOpenHelper {
+    SQLiteDatabase db;
 
     public static final String DB_NAME = "COINYDB";
 
@@ -84,7 +85,7 @@ public class DBManager extends SQLiteOpenHelper {
     }
 
     public void insertRecord(String nombre, String apellido, int password, String numero, double saldo_sol, double saldo_dol, String dni){
-        SQLiteDatabase db = this.getWritableDatabase();
+        db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(NOMBRE_COLUMNA, nombre);
@@ -113,7 +114,7 @@ public class DBManager extends SQLiteOpenHelper {
 
     public Usuario getUsuario(String numero){
         Usuario u = null;
-        SQLiteDatabase db = getReadableDatabase();
+        db = getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM tusuario WHERE numero=?", new String[] {numero});
 
 
@@ -138,7 +139,7 @@ public class DBManager extends SQLiteOpenHelper {
     }
 
     public void updateSaldo(String numero, double saldo_sol, double saldo_dol ){
-        SQLiteDatabase db = this.getWritableDatabase();
+        db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
         cv.put(SALDO_SOL_COLUMNA,saldo_sol);
@@ -150,7 +151,7 @@ public class DBManager extends SQLiteOpenHelper {
 
     public void updateBudget(String numero, String type, double monto){
 
-        SQLiteDatabase db = this.getWritableDatabase();
+        db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
         cv.put(type, monto);
@@ -161,7 +162,7 @@ public class DBManager extends SQLiteOpenHelper {
 
     public void updateUsedBudget(String numero, String type, double monto){
 
-        SQLiteDatabase db = this.getWritableDatabase();
+        db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
         cv.put(type, monto);
@@ -171,7 +172,7 @@ public class DBManager extends SQLiteOpenHelper {
     }
 
     public double getBudget(String numero, String type){
-        SQLiteDatabase db = getReadableDatabase();
+        db = getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM tbudget WHERE numero = ?", new String[] {numero});
 
         Log.i("GETBUDGET:", res.getCount()+"");
@@ -187,7 +188,7 @@ public class DBManager extends SQLiteOpenHelper {
     }
 
     public double getUsedBudget(String numero, String type){
-        SQLiteDatabase db = getReadableDatabase();
+        db = getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM tubudget WHERE numero = ?", new String[] {numero});
 
         if(res.getCount() > 0){
@@ -203,7 +204,7 @@ public class DBManager extends SQLiteOpenHelper {
     public List<Budget> getBudgets(String numero){
         List<Budget> r = new ArrayList<>();
 
-        SQLiteDatabase db = getReadableDatabase();
+        db = getReadableDatabase();
 
         Cursor resbudget = db.rawQuery("SELECT * FROM tbudget where numero=?", new String[] {numero});
         Cursor resubudget = db.rawQuery("SELECT * FROM tubudget WHERE numero=?", new String[] {numero});
