@@ -34,4 +34,5 @@ dependencies {
     implementation 'com.github.sharish:CreditCardView:v1.0.4'
     implementation 'com.github.ozodrukh:CircularReveal:2.1.0'
     implementation 'com.github.mancj:SlimChart:0.1.2'
+    implementation 'com.github.stfalcon:chatkit:0.3.3'
 }

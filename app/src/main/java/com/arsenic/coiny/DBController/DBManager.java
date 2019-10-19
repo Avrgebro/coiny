@@ -27,6 +27,7 @@ public class DBManager extends SQLiteOpenHelper {
     public static final String SALDO_SOL_COLUMNA = "saldo_sol";
     public static final String SALDO_DOL_COLUMNA = "saldo_dol";
     public static final String DNI_COLUMNA = "dni";
+    public static final String EMAIL_COLUMNA = "email";
 
     //TABLA DE PRESUPUESTO
     public static final String BUDGET_TABLA = "tbudget";
@@ -53,6 +54,7 @@ public class DBManager extends SQLiteOpenHelper {
                 + PASS_COLUMNA + " INTEGER, "
                 + NUMERO_COLUMNA + " TEXT, "
                 + DNI_COLUMNA + " TEXT, "
+                + EMAIL_COLUMNA + " TEXT, "
                 + SALDO_SOL_COLUMNA + " REAL, "
                 + SALDO_DOL_COLUMNA + " REAL )");
 

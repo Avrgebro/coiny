@@ -11,10 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Activities.More.Help"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Activities.More.Transactions"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".Activities.BudgetInfo"
             android:parentActivityName=".Activities.Budget" />
-
         <activity android:name=".Activities.Authentication.Register" />
         <activity android:name=".Activities.Authentication.Login" />
         <activity

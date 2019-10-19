@@ -13,9 +13,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.arsenic.coiny.Activities.Authentication.Login;
+import com.arsenic.coiny.Activities.More.Help;
 import com.arsenic.coiny.MainActivity;
 import com.arsenic.coiny.R;
 import com.google.android.material.textfield.TextInputEditText;
@@ -68,6 +70,15 @@ public class MoreFragment extends Fragment {
                 startActivity(intent);
 
                 getActivity().finish();
+            }
+        });
+
+        RelativeLayout help = (RelativeLayout) view.findViewById(R.id.more_ayuda);
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Help.class);
+                startActivity(intent);
             }
         });
     }
