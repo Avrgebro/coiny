@@ -3,6 +3,8 @@ package com.arsenic.coiny.Activities.More;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.arsenic.coiny.Model.Chat.Author;
 import com.arsenic.coiny.Model.Chat.Message;
@@ -26,6 +28,14 @@ public class Help extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
+        ImageView upnav = (ImageView) findViewById(R.id.help_upnav);
+        upnav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         messagesList = (MessagesList) findViewById(R.id.messagesList);
         input = (MessageInput) findViewById(R.id.input);
 
@@ -41,6 +51,9 @@ public class Help extends AppCompatActivity {
             }
         });
 
+
+        Message m = addMessage("1", "Hola, como podemos ayudarte?");
+        adapter.addToStart(m, true);
     }
 
     private Message addMessage(String userId, String text){

@@ -5,5 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.More.Transactions">
+    <ImageView
+        android:id="@+id/trans_upnav"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:rotation="180"
+        android:src="@drawable/ic_go_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.005" />
+
+    <!--<com.github.vipulasri.timelineview.TimelineView
+        android:id="@+id/timeline"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:endLineColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trans_upnav"
+        app:lineWidth="2dp"
+        app:markerSize="20dp"
+        app:startLineColor="@color/colorPrimary" />-->
+
+    <ListView
+        android:id="@+id/timeline_listView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trans_upnav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

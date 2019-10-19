@@ -18,7 +18,10 @@ import android.widget.TextView;
 
 import com.arsenic.coiny.Activities.Authentication.Login;
 import com.arsenic.coiny.Activities.More.Help;
+import com.arsenic.coiny.Activities.More.Transactions;
+import com.arsenic.coiny.DBController.DBManager;
 import com.arsenic.coiny.MainActivity;
+import com.arsenic.coiny.Model.Usuario;
 import com.arsenic.coiny.R;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -34,6 +37,8 @@ public class MoreFragment extends Fragment {
 
     private static final String TAG = "More Fragment";
     View view;
+    DBManager db;
+    Usuario u;
 
     public MoreFragment() {
         // Required empty public constructor
@@ -51,6 +56,19 @@ public class MoreFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        SharedPreferences sp = getActivity().getSharedPreferences("user", MODE_PRIVATE);
+        String number = sp.getString("number", null);
+
+        db = new DBManager(getActivity());
+
+        u = db.getUsuario(number);
+
+        TextView name = (TextView) view.findViewById(R.id.more_name);
+        name.setText(u.getNombre() + " " + u.getApellido());
+
+        TextView num = (TextView) view.findViewById(R.id.more_number);
+        num.setText(u.getNumero());
 
         TextView logout = (TextView) view.findViewById(R.id.more_logout);
 
@@ -78,6 +96,15 @@ public class MoreFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), Help.class);
+                startActivity(intent);
+            }
+        });
+
+        RelativeLayout moves = (RelativeLayout) view.findViewById(R.id.more_move);
+        moves.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Transactions.class);
                 startActivity(intent);
             }
         });

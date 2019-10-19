@@ -23,6 +23,7 @@
             android:src="@drawable/coinyqr" />
 
         <TextView
+            android:id="@+id/more_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Juan Perez"
@@ -30,6 +31,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/more_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="920014330" />
