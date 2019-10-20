@@ -50,7 +50,7 @@ public class Register extends AppCompatActivity {
             }
         });
 
-        ccard = (TextView) findViewById(R.id.card_5);
+        //ccard = (TextView) findViewById(R.id.card_5);
         numero = (TextInputEditText) findViewById(R.id.register_num);
 
 

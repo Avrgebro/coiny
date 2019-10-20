@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -53,15 +54,18 @@ public class BudgetInfo extends AppCompatActivity {
         TextView totals = (TextView) findViewById(R.id.totalsbudget);
         totals.setText("S/ " + b.getUsed() + " / S/ " + b.getBudget() );
 
+
         SlimChart slimChart = (SlimChart) findViewById(R.id.slimChart);
 
-        double porc = 100;
+        double porc = (b.getUsed()*100)/b.getBudget();
+        Log.i("Ptc ",porc+"" );
 
         if(db.getBudget(u.getNumero(), b.getType()) > 0.0){
             porc = db.getUsedBudget(u.getNumero(), b.getType()) / db.getBudget(u.getNumero(), b.getType());
         }
 
         int ptc = (int) porc;
+        Log.i("Ptc ",ptc+"" );
 
         //Optional - create colors array
         int[] colors = new int[4];

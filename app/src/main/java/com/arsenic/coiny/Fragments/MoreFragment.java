@@ -8,13 +8,16 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arsenic.coiny.Activities.Authentication.Login;
 import com.arsenic.coiny.Activities.More.Help;
@@ -108,6 +111,31 @@ public class MoreFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        RelativeLayout ref = (RelativeLayout) view.findViewById(R.id.more_referir);
+        ref.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                ViewGroup viewGroup = v.findViewById(android.R.id.content);
+                View dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.dialog_reffer, viewGroup, false);
+                Button rfr = (Button) dialogView.findViewById(R.id.reffer);
+
+
+                builder.setView(dialogView);
+                final AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+                rfr.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getActivity(), "Recibiras S/5 cuando tu contacto se registre!!", Toast.LENGTH_LONG).show();
+                        alertDialog.dismiss();
+                    }
+                });
+            }
+        });
+
+
     }
 
 

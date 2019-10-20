@@ -22,6 +22,7 @@ import com.arsenic.coiny.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 public class Budget extends AppCompatActivity {
 
@@ -60,8 +61,14 @@ public class Budget extends AppCompatActivity {
 
         List<com.arsenic.coiny.Model.Budget> budgets = new ArrayList<>();
 
+        Random rand = new Random();
+
         for(String t : types){
-            com.arsenic.coiny.Model.Budget b = new com.arsenic.coiny.Model.Budget(t,db.getBudget(t,number),db.getUsedBudget(t,number),ga.get(t));
+            int n = rand.nextInt(1500);
+            int u = rand.nextInt(n);
+
+            //com.arsenic.coiny.Model.Budget b = new com.arsenic.coiny.Model.Budget(t,db.getBudget(t,number),db.getUsedBudget(t,number),ga.get(t));
+            com.arsenic.coiny.Model.Budget b = new com.arsenic.coiny.Model.Budget(t,n,u,ga.get(t));
             budgets.add(b);
         }
 

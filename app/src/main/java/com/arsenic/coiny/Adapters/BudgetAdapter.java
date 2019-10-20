@@ -48,7 +48,7 @@ public class BudgetAdapter extends RecyclerView.Adapter<BudgetAdapter.BudgetView
         Budget budget = budgets.get(position);
 
         holder.type.setText(budget.getType());
-        String summary = budget.getUsed() + " / " + budget.getUsed();
+        String summary = budget.getUsed() + " / " + budget.getBudget();
         holder.summary.setText(summary);
         holder.image.setImageResource(budget.getResource_id());
 

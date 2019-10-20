@@ -26,6 +26,7 @@
             android:id="@+id/more_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAllCaps="true"
             android:text="Juan Perez"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -135,6 +136,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_margin="25dp"
         android:src="@drawable/ic_edit_black_24dp"

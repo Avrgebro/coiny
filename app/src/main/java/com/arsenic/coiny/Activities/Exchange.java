@@ -78,7 +78,12 @@ public class Exchange extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                double amount = Double.parseDouble(s.toString());
+                double amount;
+                if(s.toString().length() == 0){
+                    amount = 0.0;
+                } else {
+                    amount = Double.parseDouble(s.toString());
+                }
                 double conversion = amount * tc;
 
                 double aux = Math.floor(conversion * 100) / 100;

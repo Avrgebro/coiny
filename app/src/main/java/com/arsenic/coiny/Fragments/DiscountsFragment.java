@@ -50,7 +50,7 @@ public class DiscountsFragment extends Fragment{
         super.onViewCreated(view, savedInstanceState);
 
         Discount d1 = new Discount("Cineplanet", "2x1 en entradas de estrenos", "", R.drawable.cineplanet);
-        Discount d2 = new Discount("PinkBerry", "4 toppings gratis para cualquier helado", "", R.drawable.cineplanet);
+        Discount d2 = new Discount("PinkBerry", "4 toppings gratis para cualquier helado", "", R.drawable.pinkberry);
 
         List<Discount> discounts= new ArrayList<>();
         discounts.add(d1);
